@@ -4,39 +4,37 @@ public class MazeInfo {
     public int width;
     public int height;
 
-    public boolean[] horizontalWalls;
-    public boolean[] verticalWalls;
+    public boolean[][] horizontalWalls;
+    public boolean[][] verticalWalls;
 
     public MazeInfo() {}
 
     public MazeInfo(int width, int height) {
         this.width = width;
         this.height = height;
-        setHorizontalWalls();
-        setVerticalWalls();
+        initWalls();
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-        setVerticalWalls();
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
+    public void initWalls() {
         setHorizontalWalls();
+        setVerticalWalls();
     }
 
     public void setHorizontalWalls() {
-        horizontalWalls = new boolean[height-1];
-        for (int i = 0; i < height-1; i++) {
-            horizontalWalls[i] = true;
+        horizontalWalls = new boolean[width][height-1];
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height-1; y++) {
+                horizontalWalls[x][y] = true;
+            }
         }
     }
 
     public void setVerticalWalls() {
-        verticalWalls = new boolean[width-1];
-        for (int i = 0; i < width-1; i++) {
-            verticalWalls[i] = true;
+        verticalWalls = new boolean[width-1][height];
+        for (int x = 0; x < width-1; x++) {
+            for (int y = 0; y < height; y++) {
+                verticalWalls[x][y] = true;
+            }
         }
     }
 }

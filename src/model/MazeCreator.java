@@ -63,19 +63,21 @@ public class MazeCreator {
 
     private void removeWall(TileCoords tile1, TileCoords tile2) {
         if (tile1.x == tile2.x) {
+            int x = tile1.x;
             if (tile1.y + 1 == tile2.y) {
-                maze.horizontalWalls[tile1.y] = false;
+                maze.horizontalWalls[x][tile1.y] = false;
             }
             else if (tile1.y - 1 == tile2.y) {
-                maze.horizontalWalls[tile2.y] = false;
+                maze.horizontalWalls[x][tile2.y] = false;
             }
         }
         else if (tile1.y == tile2.y) {
+            int y = tile1.y;
             if (tile1.x + 1 == tile2.x) {
-                maze.verticalWalls[tile1.x] = false;
+                maze.verticalWalls[tile1.x][y] = false;
             }
             else if (tile1.x - 1 == tile2.x) {
-                maze.verticalWalls[tile2.x] = false;
+                maze.verticalWalls[tile2.x][y] = false;
             }
         }
     }
