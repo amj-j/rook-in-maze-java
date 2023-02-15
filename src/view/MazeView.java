@@ -8,15 +8,18 @@ import java.awt.event.*;
 
 import structures.MazeInfo;
 import structures.TileCoords;
+import interfaces.MazeListener;
 
 public class MazeView extends Canvas {
     private MazeInfo mazeInfo;
     private TileCoords finishPos;
     private TileCoords playerPos;
 
-    protected int tileSize;
-    protected int offsetLeft;
-    protected int offsetTop;
+    private MazeListener listener;
+
+    private int tileSize;
+    private int offsetLeft;
+    private int offsetTop;
 
     private Color mazeColor = DefaultSettings.MAZE_COLOR;
     private Color wallColor = DefaultSettings.WALL_COLOR;
@@ -37,7 +40,7 @@ public class MazeView extends Canvas {
             public void mouseClicked(MouseEvent event) {
                 int x = (event.getX() - offsetLeft)/tileSize;
                 int y = (event.getY() - offsetTop)/tileSize;
-                new TileCoords(x, y);
+                listener.mazeClicked(new TileCoords(x, y));
             }
         });
     }
@@ -168,5 +171,9 @@ public class MazeView extends Canvas {
         x += (tileSize - diameter) / 2;
         y += (tileSize - diameter) / 2;
         g.fillOval(x, y, diameter, diameter);
+    }
+
+    public void setListener(MazeListener listener) {
+        this.listener = listener;
     }
 }

@@ -5,6 +5,7 @@ import java.awt.Color;
 public class DefaultSettings {
     public static final int MAIN_WINDOW_WIDTH = 500;
     public static final int MAIN_WINDOW_HEIGHT = 300;
+    public static final String FONT_NAME = "Arial";
 
     //Colors:
     public static final Color BG_COLOR = new Color(0, 160, 0);
