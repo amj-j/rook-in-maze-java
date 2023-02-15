@@ -4,17 +4,19 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Color;
 
+import java.awt.event.*;
+
 import structures.MazeInfo;
 import structures.TileCoords;
 
 public class MazeView extends Canvas {
-    public MazeInfo mazeInfo;
+    private MazeInfo mazeInfo;
     private TileCoords finishPos;
     private TileCoords playerPos;
 
-    private int tileSize;
-    private int offsetLeft;
-    private int offsetTop;
+    protected int tileSize;
+    protected int offsetLeft;
+    protected int offsetTop;
 
     private Color mazeColor = DefaultSettings.MAZE_COLOR;
     private Color wallColor = DefaultSettings.WALL_COLOR;
@@ -23,18 +25,25 @@ public class MazeView extends Canvas {
 
     public MazeView() {
         setBackground(DefaultSettings.BG_COLOR);
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                setLayoutParameters();
+                repaint();
+            }
+        });
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent event) {
+                int x = (event.getX() - offsetLeft)/tileSize;
+                int y = (event.getY() - offsetTop)/tileSize;
+                new TileCoords(x, y);
+            }
+        });
     }
 
-    public TileCoords getPlayerPos() {
-        return this.playerPos;
-    }
-
-    public TileCoords getFinishPos() {
-        return this.finishPos;
-    }
-
-    public void setPlayerPos(TileCoords newPos) {
-        this.playerPos = newPos;
+    public void setMazeInfo(MazeInfo mazeInfo) {
+        this.mazeInfo = mazeInfo;
         repaint();
     }
 
@@ -42,24 +51,13 @@ public class MazeView extends Canvas {
         this.finishPos = newPos;
         repaint();
     }
-    
-    @Override
-    public void paint(Graphics g) {
-        setLayoutParameters();
-        drawMaze(g);
-        //drawFinish(g);
-        //drawPlayer(g);
+
+    public void setPlayerPos(TileCoords newPos) {
+        this.playerPos = newPos;
+        repaint();
     }
 
-    private void drawMaze(Graphics g) {
-        g.setColor(wallColor);
-        g.drawRect(offsetLeft, offsetTop, mazeInfo.columns*tileSize, mazeInfo.rows*tileSize);
-        g.setColor(mazeColor);
-        g.fillRect(offsetLeft, offsetTop, mazeInfo.columns*tileSize, mazeInfo.rows*tileSize);
-        drawWalls(g);
-    }
-
-    private void setLayoutParameters() {
+    public void setLayoutParameters() {
         double canWHRatio = ((double) getWidth()) / ((double) getHeight());
         double mazeCRRatio = ((double) mazeInfo.columns) / ((double) mazeInfo.rows);
         if (canWHRatio > 1.0) {
@@ -100,6 +98,27 @@ public class MazeView extends Canvas {
         this.tileSize = getHeight() / (mazeInfo.rows + 1);
         this.offsetLeft = (getWidth() - this.tileSize * mazeInfo.columns)/2;
         this.offsetTop = this.tileSize/2;
+    }
+    
+    @Override
+    public void paint(Graphics g) {
+        if (mazeInfo != null) {
+            drawMaze(g);
+        }
+        if (finishPos != null) {
+            drawFinish(g);
+        }
+        if (playerPos != null) {
+            drawPlayer(g);
+        }
+    }
+
+    private void drawMaze(Graphics g) {
+        g.setColor(wallColor);
+        g.drawRect(offsetLeft, offsetTop, mazeInfo.columns*tileSize, mazeInfo.rows*tileSize);
+        g.setColor(mazeColor);
+        g.fillRect(offsetLeft, offsetTop, mazeInfo.columns*tileSize, mazeInfo.rows*tileSize);
+        drawWalls(g);
     }
 
     private void drawWalls(Graphics g) {
@@ -142,10 +161,12 @@ public class MazeView extends Canvas {
     }
 
     private void drawPlayer(Graphics g) {
-        g.setColor(playerColor);
         int x = offsetLeft + playerPos.x*tileSize;
         int y = offsetTop + playerPos.y*tileSize;
-        g.fillOval(x, y, tileSize, tileSize);
+        g.setColor(playerColor);
+        int diameter = tileSize - 10;
+        x += (tileSize - diameter) / 2;
+        y += (tileSize - diameter) / 2;
+        g.fillOval(x, y, diameter, diameter);
     }
-    
 }

@@ -12,5 +12,5 @@ public class DefaultSettings {
     public static final Color MAZE_COLOR = new Color(255, 255, 255);
     public static final Color WALL_COLOR = new Color(0, 0, 0);
     public static final Color FINISH_COLOR = new Color(255, 0, 0);
-    public static final Color PLAYER_COLOR = new Color(0, 0, 100);
+    public static final Color PLAYER_COLOR = new Color(176, 0, 0);
 }
