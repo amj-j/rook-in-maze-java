@@ -3,11 +3,11 @@ package controller;
 import interfaces.MazeListener;
 import model.Model;
 import structures.TileCoords;
-import view.MazeView;
+import view.MazePanel;
 
 public class MazeController implements MazeListener {
     Model model;
-    MazeView view;
+    MazePanel view;
 
     public MazeController(Model model) {
         this.model = model;

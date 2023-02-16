@@ -10,7 +10,7 @@ import structures.MazeInfo;
 import structures.TileCoords;
 import interfaces.MazeListener;
 
-public class MazeView extends Canvas {
+public class MazePanel extends Canvas {
     private MazeInfo mazeInfo;
     private TileCoords finishPos;
     private TileCoords playerPos;
@@ -26,7 +26,7 @@ public class MazeView extends Canvas {
     private Color finishColor = DefaultSettings.FINISH_COLOR;
     private Color playerColor = DefaultSettings.PLAYER_COLOR;
 
-    public MazeView() {
+    public MazePanel() {
         setBackground(DefaultSettings.BG_COLOR);
         addComponentListener(new ComponentAdapter() {
             @Override
