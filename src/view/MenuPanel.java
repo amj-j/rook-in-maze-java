@@ -6,14 +6,14 @@ import javax.swing.*;
 
 import interfaces.MenuListener;
 
-public class MenuView extends JPanel {
+public class MenuPanel extends JPanel {
     JLabel gamesWonLabel;
     JButton settingsButton;
     JButton resetButton;
 
     MenuListener listener;
 
-    public MenuView() {     
+    public MenuPanel() {     
         setBackground(DefaultSettings.BG_COLOR);
         settingsButton = new JButton("Settings");
         resetButton = new JButton("Reset");
