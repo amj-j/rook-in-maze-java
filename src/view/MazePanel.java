@@ -8,9 +8,10 @@ import java.awt.event.*;
 
 import structures.MazeInfo;
 import structures.TileCoords;
-import interfaces.MazeListener;
+import interfaces.listeners.MazeListener;
+import interfaces.viewInterfaces.MazeView;
 
-public class MazePanel extends Canvas {
+public class MazePanel extends Canvas implements MazeView {
     private MazeInfo mazeInfo;
     private TileCoords finishPos;
     private TileCoords playerPos;
@@ -45,8 +46,9 @@ public class MazePanel extends Canvas {
         });
     }
 
-    public void setMazeInfo(MazeInfo mazeInfo) {
+    public void newMaze(MazeInfo mazeInfo) {
         this.mazeInfo = mazeInfo;
+        setLayoutParameters();
         repaint();
     }
 
@@ -173,7 +175,7 @@ public class MazePanel extends Canvas {
         g.fillOval(x, y, diameter, diameter);
     }
 
-    public void setListener(MazeListener listener) {
+    public void addListener(MazeListener listener) {
         this.listener = listener;
     }
 }

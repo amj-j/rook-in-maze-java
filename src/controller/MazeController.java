@@ -1,24 +1,22 @@
 package controller;
 
-import interfaces.MazeListener;
-import model.Model;
-import structures.TileCoords;
-import view.MazePanel;
+import interfaces.controllerInterfaces.ControllerInterface;
+import interfaces.listeners.MazeListener;
+import structures.*;
 
 public class MazeController implements MazeListener {
-    Model model;
-    MazePanel view;
+    ControllerInterface controller;
 
-    public MazeController(Model model) {
-        this.model = model;
+    public MazeController(ControllerInterface controller) {
+        this.controller = controller;
     }
 
     public void mazeClicked(TileCoords coords) {
-        TileCoords newPlayerPos = model.moveTo(coords);
+        TileCoords newPlayerPos = controller.getModel().moveTo(coords);
         if (newPlayerPos != null) {
-            view.setPlayerPos(newPlayerPos);
+            controller.getMazeView().setPlayerPos(newPlayerPos);
         }
-        if (model.hasWon()) {
+        if (controller.getModel().hasWon()) {
             
         }
     }

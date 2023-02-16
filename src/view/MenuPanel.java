@@ -4,9 +4,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import interfaces.MenuListener;
+import interfaces.listeners.MenuListener;
+import interfaces.viewInterfaces.MenuView;
 
-public class MenuPanel extends JPanel {
+public class MenuPanel extends JPanel implements MenuView {
     JLabel gamesWonLabel;
     JButton settingsButton;
     JButton resetButton;
