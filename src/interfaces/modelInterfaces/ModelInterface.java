@@ -11,4 +11,5 @@ public interface ModelInterface {
     public int getWonGames();
     public void resetWonGames();
     public void addWonGame();
+    public void setMazeSize(MazeSize newSize);
 }

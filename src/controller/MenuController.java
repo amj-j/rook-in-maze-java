@@ -2,6 +2,7 @@ package controller;
 
 import interfaces.listeners.MenuListener;
 import interfaces.modelInterfaces.ModelInterface;
+import structures.MazeSize;
 import interfaces.controllerInterfaces.ControllerInterface;
 
 public class MenuController implements MenuListener {
@@ -18,7 +19,8 @@ public class MenuController implements MenuListener {
         controller.getMenuView().setWonGames(model.getWonGames());
     }
 
-    public void changeMazeSize() {
-
+    public void changeMazeSize(MazeSize newSize) {
+        controller.getModel().setMazeSize(newSize);
+        controller.initNewGame();
     }
 }

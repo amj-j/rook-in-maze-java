@@ -8,10 +8,15 @@ public class Model implements ModelInterface {
     private TileCoords playerPos;
     private TileCoords finishPos;
     private int gamesWon = 0;
+    private MazeSize mazeSize;
+
+    public Model() {
+        this.mazeSize = DefaultValues.MAZE_SIZE;
+    }
 
     public MazeInfo newMaze() {
         MazeCreator mazeCreator = new MazeCreator();
-        this.maze = mazeCreator.createMaze(DefaultValues.MAZE_SIZE);
+        this.maze = mazeCreator.createMaze(mazeSize);
         return this.maze;
     }
 
@@ -78,5 +83,9 @@ public class Model implements ModelInterface {
 
     public void addWonGame() {
         this.gamesWon++;
+    }
+
+    public void setMazeSize(MazeSize newSize) {
+        this.mazeSize = newSize;
     }
 }
