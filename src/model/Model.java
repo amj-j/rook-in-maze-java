@@ -34,6 +34,9 @@ public class Model implements ModelInterface {
         if (chosenPos.x != playerPos.x && chosenPos.y != playerPos.y) {
             return null;
         }
+        if (chosenPos.x == playerPos.x && chosenPos.y == playerPos.y) {
+            return null;
+        }
         if (chosenPos.x == playerPos.x) {
             int x = chosenPos.x;
             if (playerPos.y < chosenPos.y) {
@@ -50,16 +53,48 @@ public class Model implements ModelInterface {
         else if (chosenPos.y == playerPos.y) {
             int y = chosenPos.y;
             if (playerPos.x < chosenPos.x) {
-                while (playerPos.x != chosenPos.x && !(maze.horizontalWalls[playerPos.x][y])) {
+                while (playerPos.x != chosenPos.x && !(maze.verticalWalls[playerPos.x][y])) {
                     playerPos.x++;
                 }
             }
             else if (playerPos.x > chosenPos.x) {
-                while (playerPos.x != chosenPos.x && !(maze.horizontalWalls[playerPos.x-1][y])) {
+                while (playerPos.x != chosenPos.x && !(maze.verticalWalls[playerPos.x-1][y])) {
                     playerPos.x--;
                 }
             }
         }
+        return this.playerPos;
+    }
+
+    public TileCoords moveLeft() {
+        if (playerPos.x - 1 < 0 || maze.verticalWalls[playerPos.x-1][playerPos.y]) {
+            return null;
+        }
+        playerPos.x--;
+        return this.playerPos;
+    }
+
+    public TileCoords moveRight() {
+        if (playerPos.x + 1 >= maze.size.cols || maze.verticalWalls[playerPos.x][playerPos.y]) {
+            return null;
+        }
+        playerPos.x++;
+        return this.playerPos;
+    }
+
+    public TileCoords moveUp() {
+        if (playerPos.y - 1 < 0 || maze.horizontalWalls[playerPos.x][playerPos.y-1]) {
+            return null;
+        }
+        playerPos.y--;
+        return this.playerPos;
+    }
+
+    public TileCoords moveDown() {
+        if (playerPos.y + 1 >= maze.size.rows || maze.horizontalWalls[playerPos.x][playerPos.y]) {
+            return null;
+        }
+        playerPos.y++;
         return this.playerPos;
     }
 
@@ -79,10 +114,6 @@ public class Model implements ModelInterface {
 
     public void resetWonGames() {
         this.gamesWon = 0;
-    }
-
-    public void addWonGame() {
-        this.gamesWon++;
     }
 
     public void setMazeSize(MazeSize newSize) {

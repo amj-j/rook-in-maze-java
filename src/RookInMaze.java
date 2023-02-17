@@ -7,6 +7,6 @@ public class RookInMaze {
         Model model = new Model();
         MainWindow view = new MainWindow();
         Controller controller = new Controller(model, view);
-        controller.initListeners();
+        controller.initNewGame();
     }
 }

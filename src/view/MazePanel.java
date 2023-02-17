@@ -47,6 +47,27 @@ public class MazePanel extends Canvas implements MazeView {
                 listener.mazeClicked(new TileCoords(x, y));
             }
         });
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    System.out.println("right");
+                    listener.rightPressed();
+                }
+                else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    System.out.println("left");
+                    listener.leftPressed();
+                }
+                else if (e.getKeyCode() == KeyEvent.VK_UP) {
+                    System.out.println("up");
+                    listener.upPressed();
+                }
+                else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                    System.out.println("down");
+                    listener.downPressed();
+                }
+            }
+        });
     }
 
     public void newMaze(MazeInfo mazeInfo) {

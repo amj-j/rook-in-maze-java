@@ -21,9 +21,6 @@ public class Controller implements ControllerInterface {
         this.view = view;
         this.mazeView = view.getMazeView();
         this.menuView = view.getMenuView();
-    }
-
-    public void initListeners() {
         this.mazeListener = new MazeController(this);
         this.menuListener = new MenuController(this);
         mazeView.addListener(mazeListener);
