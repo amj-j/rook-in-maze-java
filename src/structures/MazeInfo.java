@@ -1,17 +1,15 @@
 package structures;
 
 public class MazeInfo {
-    public int columns;
-    public int rows;
+    public MazeSize size;
 
     public boolean[][] horizontalWalls;
     public boolean[][] verticalWalls;
 
     public MazeInfo() {}
 
-    public MazeInfo(int width, int height) {
-        this.columns = width;
-        this.rows = height;
+    public MazeInfo(MazeSize size) {
+        this.size = size;
         initWalls();
     }
 
@@ -21,18 +19,18 @@ public class MazeInfo {
     }
 
     public void setHorizontalWalls() {
-        horizontalWalls = new boolean[columns][rows-1];
-        for (int x = 0; x < columns; x++) {
-            for (int y = 0; y < rows-1; y++) {
+        horizontalWalls = new boolean[size.cols][size.rows-1];
+        for (int x = 0; x < size.cols; x++) {
+            for (int y = 0; y < size.rows-1; y++) {
                 horizontalWalls[x][y] = true;
             }
         }
     }
 
     public void setVerticalWalls() {
-        verticalWalls = new boolean[columns-1][rows];
-        for (int x = 0; x < columns-1; x++) {
-            for (int y = 0; y < rows; y++) {
+        verticalWalls = new boolean[size.cols-1][size.rows];
+        for (int x = 0; x < size.cols-1; x++) {
+            for (int y = 0; y < size.rows; y++) {
                 verticalWalls[x][y] = true;
             }
         }

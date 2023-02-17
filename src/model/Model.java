@@ -11,7 +11,7 @@ public class Model implements ModelInterface {
 
     public MazeInfo newMaze() {
         MazeCreator mazeCreator = new MazeCreator();
-        this.maze = mazeCreator.createMaze(DefaultValues.MAZE_WIDTH, DefaultValues.MAZE_HEIGHT);
+        this.maze = mazeCreator.createMaze(DefaultValues.MAZE_SIZE);
         return this.maze;
     }
 

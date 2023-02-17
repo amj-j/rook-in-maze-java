@@ -64,7 +64,7 @@ public class MazePanel extends Canvas implements MazeView {
 
     public void setLayoutParameters() {
         double canWHRatio = ((double) getWidth()) / ((double) getHeight());
-        double mazeCRRatio = ((double) mazeInfo.columns) / ((double) mazeInfo.rows);
+        double mazeCRRatio = ((double) mazeInfo.size.cols) / ((double) mazeInfo.size.rows);
         if (canWHRatio > 1.0) {
             if (mazeCRRatio > 1.0) {
                 if (canWHRatio < mazeCRRatio) {
@@ -94,14 +94,14 @@ public class MazePanel extends Canvas implements MazeView {
     }
 
     private void constraintByWidth() {
-        this.tileSize = getWidth() / (mazeInfo.columns + 1);
+        this.tileSize = getWidth() / (mazeInfo.size.cols + 1);
         this.offsetLeft = this.tileSize/2;
-        this.offsetTop = (getHeight() - this.tileSize * mazeInfo.rows)/2;
+        this.offsetTop = (getHeight() - this.tileSize * mazeInfo.size.rows)/2;
     }
 
     private void constraintByHeight() {
-        this.tileSize = getHeight() / (mazeInfo.rows + 1);
-        this.offsetLeft = (getWidth() - this.tileSize * mazeInfo.columns)/2;
+        this.tileSize = getHeight() / (mazeInfo.size.rows + 1);
+        this.offsetLeft = (getWidth() - this.tileSize * mazeInfo.size.cols)/2;
         this.offsetTop = this.tileSize/2;
     }
     
@@ -120,23 +120,23 @@ public class MazePanel extends Canvas implements MazeView {
 
     private void drawMaze(Graphics g) {
         g.setColor(wallColor);
-        g.drawRect(offsetLeft, offsetTop, mazeInfo.columns*tileSize, mazeInfo.rows*tileSize);
+        g.drawRect(offsetLeft, offsetTop, mazeInfo.size.cols*tileSize, mazeInfo.size.rows*tileSize);
         g.setColor(mazeColor);
-        g.fillRect(offsetLeft, offsetTop, mazeInfo.columns*tileSize, mazeInfo.rows*tileSize);
+        g.fillRect(offsetLeft, offsetTop, mazeInfo.size.cols*tileSize, mazeInfo.size.rows*tileSize);
         drawWalls(g);
     }
 
     private void drawWalls(Graphics g) {
         g.setColor(wallColor);
-        for (int x = 0; x < mazeInfo.columns; x++) {
-            for (int y = 0; y < mazeInfo.rows-1; y++) {
+        for (int x = 0; x < mazeInfo.size.cols; x++) {
+            for (int y = 0; y < mazeInfo.size.rows-1; y++) {
                 if (mazeInfo.horizontalWalls[x][y] == true) {
                     drawHorizontalWall(g, x, y);
                 }
             }
         }
-        for (int x = 0; x < mazeInfo.columns-1; x++) {
-            for (int y = 0; y < mazeInfo.rows; y++) {
+        for (int x = 0; x < mazeInfo.size.cols-1; x++) {
+            for (int y = 0; y < mazeInfo.size.rows; y++) {
                 if (mazeInfo.verticalWalls[x][y] == true) {
                     drawVerticalWall(g, x, y);
                 }

@@ -31,7 +31,7 @@ public class Controller implements ControllerInterface {
 
     public void initNewGame() {
         MazeInfo mazeInfo =  model.newMaze();
-        TileCoords finishPos = model.setFinish(new TileCoords(mazeInfo.columns - 1, mazeInfo.rows - 1));
+        TileCoords finishPos = model.setFinish(new TileCoords(mazeInfo.size.cols - 1, mazeInfo.size.rows - 1));
         TileCoords playerPos = model.initPlayer(new TileCoords(0, 0));
         mazeView.newMaze(mazeInfo);
         mazeView.setFinishPos(finishPos);

@@ -3,8 +3,7 @@ package model;
 import java.util.Random;
 import java.util.ArrayList;
 
-import structures.MazeInfo;
-import structures.TileCoords;
+import structures.*;
 
 public class MazeCreator {
     MazeInfo maze;
@@ -12,9 +11,9 @@ public class MazeCreator {
     Random random;
 
 
-    public MazeInfo createMaze(int width, int height) {
-        this.maze = new MazeInfo(width, height);
-        this.tiles = new boolean[width][height];
+    public MazeInfo createMaze(MazeSize size) {
+        this.maze = new MazeInfo(size);
+        this.tiles = new boolean[size.cols][size.rows];
         this.random = new Random();
         setWalls();
         return this.maze;
