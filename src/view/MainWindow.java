@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 import interfaces.viewInterfaces.*;
@@ -19,6 +20,16 @@ public class MainWindow extends JFrame implements ViewInterface {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                int windowWidth = getContentPane().getWidth();
+                int windowHeight = getContentPane().getHeight();
+                menu.setPreferredSize(new Dimension(windowWidth, windowHeight/8));
+                maze.setPreferredSize(new Dimension(windowWidth, 7*(windowHeight/8)));
+            }
+        });
     }
 
     public MazeView getMazeView() {

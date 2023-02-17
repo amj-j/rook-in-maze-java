@@ -14,7 +14,8 @@ public class MenuPanel extends JPanel implements MenuView {
     MenuListener listener;
 
     public MenuPanel() {     
-        setBackground(DefaultSettings.BG_COLOR);
+        //setBackground(DefaultSettings.BG_COLOR);
+        setBackground(new Color(255, 0, 0));
         resetButton = new JButton("Reset");
         gamesWonLabel = new JLabel();
         gamesWonLabel.setBackground(DefaultSettings.BG_COLOR);
