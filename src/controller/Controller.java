@@ -1,5 +1,6 @@
 package controller;
 
+import structures.*;
 import interfaces.modelInterfaces.ModelInterface;
 import interfaces.controllerInterfaces.ControllerInterface;
 import interfaces.viewInterfaces.*;
@@ -26,5 +27,14 @@ public class Controller implements ControllerInterface {
 
     public MenuView getMenuView() {
         return this.menu;
+    }
+
+    public void initNewGame() {
+        MazeInfo mazeInfo =  model.newMaze();
+        TileCoords finishPos = model.setFinish(new TileCoords(mazeInfo.columns - 1, mazeInfo.rows - 1));
+        TileCoords playerPos = model.initPlayer(new TileCoords(0, 0));
+        mazeView.newMaze(mazeInfo);
+        mazeView.setFinishPos(finishPos);
+        mazeView.setPlayerPos(playerPos);
     }
 }

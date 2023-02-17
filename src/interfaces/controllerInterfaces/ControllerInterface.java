@@ -8,4 +8,5 @@ public interface ControllerInterface {
     public ViewInterface getView();
     public MazeView getMazeView();
     public MenuView getMenuView();
+    public void initNewGame();
 }

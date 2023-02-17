@@ -8,4 +8,7 @@ public interface ModelInterface {
     public TileCoords setFinish(TileCoords tile);
     public TileCoords moveTo(TileCoords tile);
     public boolean hasWon();
+    public int getWonGames();
+    public void resetWonGames();
+    public void addWonGame();
 }

@@ -4,10 +4,10 @@ import interfaces.modelInterfaces.ModelInterface;
 import structures.*;
 
 public class Model implements ModelInterface {
-    MazeInfo maze;
-    TileCoords playerPos;
-    TileCoords finishPos;
-    int gamesWon = 0;
+    private MazeInfo maze;
+    private TileCoords playerPos;
+    private TileCoords finishPos;
+    private int gamesWon = 0;
 
     public MazeInfo newMaze() {
         MazeCreator mazeCreator = new MazeCreator();
@@ -66,5 +66,17 @@ public class Model implements ModelInterface {
         else {
             return false;
         }
+    }
+
+    public int getWonGames() {
+        return this.gamesWon;
+    }
+
+    public void resetWonGames() {
+        this.gamesWon = 0;
+    }
+
+    public void addWonGame() {
+        this.gamesWon++;
     }
 }
