@@ -3,7 +3,9 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 
-public class MainWindow extends JFrame {
+import interfaces.viewInterfaces.*;
+
+public class MainWindow extends JFrame implements ViewInterface {
     MazePanel maze;
     MenuPanel menu;
 
@@ -17,5 +19,13 @@ public class MainWindow extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+    }
+
+    public MazeView getMazeView() {
+        return this.maze;
+    }
+
+    public MenuView getMenuView() {
+        return this.menu;
     }
 }

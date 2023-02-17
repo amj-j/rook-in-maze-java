@@ -32,6 +32,9 @@ public class MazePanel extends Canvas implements MazeView {
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
+                if (mazeInfo == null) {
+                    return;
+                }
                 setLayoutParameters();
                 repaint();
             }

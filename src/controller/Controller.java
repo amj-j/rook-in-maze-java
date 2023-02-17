@@ -4,21 +4,38 @@ import structures.*;
 import interfaces.modelInterfaces.ModelInterface;
 import interfaces.controllerInterfaces.ControllerInterface;
 import interfaces.viewInterfaces.*;
+import interfaces.listeners.*;
 
 public class Controller implements ControllerInterface {
     private ModelInterface model;
-    private ViewInterface mainWindow;
+    private ViewInterface view;
+
     private MazeView mazeView;
-    private MenuView menu;
+    private MenuView menuView;
+
+    private MazeListener mazeListener;
+    private MenuListener menuListener;
     
-    
+    public Controller(ModelInterface model, ViewInterface view) {
+        this.model = model;
+        this.view = view;
+        this.mazeView = view.getMazeView();
+        this.menuView = view.getMenuView();
+    }
+
+    public void initListeners() {
+        this.mazeListener = new MazeController(this);
+        this.menuListener = new MenuController(this);
+        mazeView.addListener(mazeListener);
+        menuView.addListener(menuListener);
+    }
 
     public ModelInterface getModel() {
         return this.model;
     }
 
     public ViewInterface getView() {
-        return this.mainWindow;
+        return this.view;
     }
 
     public MazeView getMazeView() {
@@ -26,7 +43,7 @@ public class Controller implements ControllerInterface {
     }
 
     public MenuView getMenuView() {
-        return this.menu;
+        return this.menuView;
     }
 
     public void initNewGame() {

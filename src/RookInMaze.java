@@ -1,15 +1,12 @@
-import model.MazeCreator;
-
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
-
-import model.DefaultValues;
-import view.*;
-import structures.*;
+import model.Model;
+import view.MainWindow;
+import controller.Controller;
 
 public class RookInMaze {
     public static void main(String[] args) {
-        
+        Model model = new Model();
+        MainWindow view = new MainWindow();
+        Controller controller = new Controller(model, view);
+        controller.initListeners();
     }
 }
