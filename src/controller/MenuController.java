@@ -14,10 +14,6 @@ public class MenuController implements MenuListener {
         
     }
 
-    public void openSettings() {
-
-    }
-
     public void changeMazeSize() {
 
     }

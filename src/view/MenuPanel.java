@@ -9,19 +9,16 @@ import interfaces.viewInterfaces.MenuView;
 
 public class MenuPanel extends JPanel implements MenuView {
     JLabel gamesWonLabel;
-    JButton settingsButton;
     JButton resetButton;
 
     MenuListener listener;
 
     public MenuPanel() {     
         setBackground(DefaultSettings.BG_COLOR);
-        settingsButton = new JButton("Settings");
         resetButton = new JButton("Reset");
         gamesWonLabel = new JLabel();
         gamesWonLabel.setBackground(DefaultSettings.BG_COLOR);
         gamesWonLabel.setText("Games won: 0");
-        add(settingsButton);
         add(resetButton);
         add(gamesWonLabel);
         addComponentListener(new ComponentAdapter() {
@@ -29,13 +26,6 @@ public class MenuPanel extends JPanel implements MenuView {
             public void componentResized(ComponentEvent e) {
                 Font font = new Font(DefaultSettings.FONT_NAME, Font.BOLD, getHeight()/2);
                 gamesWonLabel.setFont(font);
-            }
-        });
-        settingsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (listener != null) {
-                    listener.openSettings();
-                }
             }
         });
         resetButton.addActionListener(new ActionListener() {
