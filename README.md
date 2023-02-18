@@ -1,19 +1,4 @@
-# Assignment 2 - Rook in a maze
+### Rook in a maze
 
-This is a java window application using the Swing library.
-
-When the application starts, generate a maze using the [randomized depth first search](https://www.baeldung.com/cs/maze-generation#dfs-maze) algorithm and draw it onto the canvas.
-The grid containing the maze must be at least 11x11 tiles large (including wall tiles). The entire maze must be surrounded by walls (no paths in the maze can touch the borders of the window).
-
-In the generated maze choose in any way a starting and a goal point. Place the player figure on the starting point. The player can move their figure in 3 ways:
-* by using the arrows keys on their keyboard. Always by one tile in the specified direction. They cannot enter a tile that contains a wall.
-* by using the mouse. When the player figure is clicked, it can be moved like a rook chess piece (i.e. any number of tiles in the horizontal, or vertical directions).
-The destination is chosen by a second mouse click. Tiles that can be moved to in this manner must be highlighted, when the mouse hovers over them. When moving in this manner, the player cannot jump over walls.
-* by using buttons on the side menu, that represent the arrow keys. The rules for moving in this manner are the same, as for the movement by the arrow keys on the keyboard.
-
-When the player reaches the goal point, the application should generate a new maze and the game starts over.
-
-The side menu must contain:
-* a counter of successfully completed mazes
-* a button that resets the counter and generates a new maze
-* buttons representing the arrow keys, which can be used to move the player. These buttons must be placed in the same way, they are placed on a regular keyboard.
+Desktop JAVA aplication, AWT and Swing libraries are used for graphical output.
+The app is a singleplayer game - Rook in a maze. Game consists of a maze generate by [randomized depth first search](https://www.baeldung.com/cs/maze-generation#dfs-maze) algorithm and a rook. Players task is to move the rook using key arrows or mouse from the upper-left corner to the bottom-right corner. GUI contains solved mazes number counter, which can be reset by a button. Difficulty (the size of the maze) can be also changed during runtime.
