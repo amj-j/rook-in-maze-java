@@ -1,4 +1,4 @@
-package interfaces.viewInterfaces;
+package interfaces.view;
 
 import interfaces.listeners.MenuListener;
 

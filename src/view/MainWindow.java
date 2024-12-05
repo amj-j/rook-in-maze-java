@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import interfaces.viewInterfaces.*;
+import interfaces.view.*;
 
 public class MainWindow extends JFrame implements ViewInterface {
     MazePanel maze;

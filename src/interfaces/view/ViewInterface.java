@@ -1,4 +1,4 @@
-package interfaces.viewInterfaces;
+package interfaces.view;
 
 public interface ViewInterface {
     public MazeView getMazeView();

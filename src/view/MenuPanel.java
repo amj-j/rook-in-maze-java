@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import interfaces.listeners.MenuListener;
-import interfaces.viewInterfaces.MenuView;
+import interfaces.view.MenuView;
 import structures.MazeSize;
 
 public class MenuPanel extends JPanel implements MenuView {

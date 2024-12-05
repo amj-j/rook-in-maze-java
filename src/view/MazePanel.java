@@ -9,7 +9,7 @@ import java.awt.event.*;
 import structures.MazeInfo;
 import structures.TileCoords;
 import interfaces.listeners.MazeListener;
-import interfaces.viewInterfaces.MazeView;
+import interfaces.view.MazeView;
 
 public class MazePanel extends Canvas implements MazeView {
     private MazeInfo mazeInfo;

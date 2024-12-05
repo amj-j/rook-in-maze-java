@@ -1,7 +1,7 @@
 package interfaces.controller;
 
 import interfaces.model.ModelInterface;
-import interfaces.viewInterfaces.*;;
+import interfaces.view.*;;
 
 public interface ControllerInterface {
     public ModelInterface getModel();
