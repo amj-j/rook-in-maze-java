@@ -1,6 +1,6 @@
 package model;
 
-import interfaces.modelInterfaces.ModelInterface;
+import interfaces.model.ModelInterface;
 import structures.*;
 
 public class Model implements ModelInterface {

@@ -1,9 +1,9 @@
 package controller;
 
+import interfaces.controller.ControllerInterface;
 import interfaces.listeners.MenuListener;
-import interfaces.modelInterfaces.ModelInterface;
+import interfaces.model.ModelInterface;
 import structures.MazeSize;
-import interfaces.controllerInterfaces.ControllerInterface;
 
 public class MenuController implements MenuListener {
     ControllerInterface controller;

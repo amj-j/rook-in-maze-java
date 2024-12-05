@@ -1,6 +1,6 @@
-package interfaces.controllerInterfaces;
+package interfaces.controller;
 
-import interfaces.modelInterfaces.ModelInterface;
+import interfaces.model.ModelInterface;
 import interfaces.viewInterfaces.*;;
 
 public interface ControllerInterface {

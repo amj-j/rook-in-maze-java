@@ -1,8 +1,8 @@
 package controller;
 
-import interfaces.controllerInterfaces.ControllerInterface;
+import interfaces.controller.ControllerInterface;
 import interfaces.listeners.MazeListener;
-import interfaces.modelInterfaces.ModelInterface;
+import interfaces.model.ModelInterface;
 import structures.*;
 
 public class MazeController implements MazeListener {

@@ -1,4 +1,4 @@
-package interfaces.modelInterfaces;
+package interfaces.model;
 
 import structures.*;
 

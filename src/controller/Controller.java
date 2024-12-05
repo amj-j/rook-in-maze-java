@@ -1,10 +1,10 @@
 package controller;
 
 import structures.*;
-import interfaces.modelInterfaces.ModelInterface;
-import interfaces.controllerInterfaces.ControllerInterface;
 import interfaces.viewInterfaces.*;
+import interfaces.controller.ControllerInterface;
 import interfaces.listeners.*;
+import interfaces.model.ModelInterface;
 
 public class Controller implements ControllerInterface {
     private ModelInterface model;
